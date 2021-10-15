@@ -8,14 +8,15 @@ namespace TicTacCamelToe
 {
     public class GameLogic
     {
+        public List<Rectangle> Rectangles { get; set; } = new List<Rectangle>();
         public List<string> GameBorad { get; set; } = new List<string> { "", "", "", "", "", "", "", "", "", };
         internal string player = "O";
 
         internal void GetRectangle(Vector2 Pos)
         {
-            for (int i = 0; i < Grafic.Rectangles.Count; i++)
+            for (int i = 0; i < Rectangles.Count; i++)
             {
-                if (Raylib.CheckCollisionPointRec(Pos, Grafic.Rectangles[i]))
+                if (Raylib.CheckCollisionPointRec(Pos, Rectangles[i]))
                 {
                     PlaceSymbol(i);
                 }
