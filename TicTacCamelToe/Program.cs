@@ -8,7 +8,7 @@ namespace TicTacCamelToe
         public static GameLogic GameLogic { get; set; }
         static void Main()
         {
-            Raylib.InitWindow(1920, 1080, "Tic tac cameltoe, vi älskar cameltoes.");
+            Raylib.InitWindow(1920, 1080, "Tic tac cameltoe");
             Raylib.SetTargetFPS(60);
             //Raylib.ToggleFullscreen();
 
