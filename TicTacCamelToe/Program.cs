@@ -1,12 +1,29 @@
-﻿using System;
+﻿using Raylib_cs;
+using System;
 
 namespace TicTacCamelToe
 {
     class Program
     {
-        static void Main(string[] args)
+        public static GameLogic GameLogic { get; set; }
+        static void Main()
         {
-            Console.WriteLine("Hello World!");
+            Raylib.InitWindow(1920, 1080, "Tic tac cameltoe");
+            Raylib.SetTargetFPS(60);
+            //Raylib.ToggleFullscreen();
+
+            GameLogic = new GameLogic();
+
+            while (!Raylib.WindowShouldClose())
+            {
+                Raylib.BeginDrawing();
+                Raylib.ClearBackground(Color.WHITE);
+                Grafic.DrawGameBoard();
+
+
+                Raylib.EndDrawing();
+            }
+            Raylib.CloseWindow();
         }
     }
 }
