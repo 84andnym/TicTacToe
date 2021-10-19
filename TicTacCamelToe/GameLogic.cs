@@ -57,4 +57,9 @@ namespace TicTacCamelToe
             return (false, "its a draw");
         }
     }
+    public enum GameState
+    {
+        isPlaying,
+        winScreen
+    }
 }

@@ -39,6 +39,7 @@ namespace TicTacCamelToe
                 {
                     var pos = Raylib.GetMousePosition();
                     GameLogic.GetRectangle(pos);
+                    GameLogic.CheckWinner();
                 }
             }
             Raylib.CloseWindow();
