@@ -10,7 +10,7 @@ namespace TicTacCamelToe
         {
             Raylib.InitWindow(1920, 1080, "Tic tac toe");
             Raylib.SetTargetFPS(60);
-            Raylib.ToggleFullscreen();
+            //Raylib.ToggleFullscreen();
 
             GameLogic = new GameLogic();
 

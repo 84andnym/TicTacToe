@@ -7,7 +7,6 @@ namespace TicTacCamelToe
 {
     class Grafic
     {
-        public static List<Rectangle> Rectangles { get; set; } = new List<Rectangle>();
         internal static void DrawGameBoard()
         {
             var width = 1920;
@@ -19,7 +18,7 @@ namespace TicTacCamelToe
                 {
                     var rec = new Rectangle((width / 4 * i - (width / 5 / 2)), (height / 4 * y - (height / 5 / 2)), width / 5, height / 5);
                     Raylib.DrawRectangleRec(rec, Program.GameLogic.GameBorad[x] == "O" ? Color.GREEN : Program.GameLogic.GameBorad[x] == "X" ? Color.RED : Color.GRAY);
-                    Rectangles.Add(rec);
+                    Program.GameLogic.Rectangles.Add(rec);
                     x++;
                 }
             }
