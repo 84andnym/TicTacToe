@@ -7,6 +7,7 @@ namespace TicTacToe
     public class GameLogic
     {
         public List<Rectangle> Rectangles { get; set; } = new List<Rectangle>();
+        public int Turns { get; set; } = 0;
         public List<string> GameBorad { get; set; } = new List<string> { "", "", "", "", "", "", "", "", "" };
         internal string player = "O";
 
@@ -27,12 +28,14 @@ namespace TicTacToe
             {
                 GameBorad[i] = player;
                 player = player == "O" ? "X" : "O";
+                Turns++;
             }
         }
 
         public void ClearGame()
         {
             GameBorad.Clear();
+            Turns = 0;
             GameBorad = new List<string> { "", "", "", "", "", "", "", "", "" };
         }
 
@@ -60,7 +63,11 @@ namespace TicTacToe
             {
                 return (true, "Player X Wins");
             }
-            return (false, "its a draw");
+            else if (Turns == 9)
+            {
+                return (true, "It's a draw");
+            }
+            return (false, "");
         }
     }
     public enum GameState
