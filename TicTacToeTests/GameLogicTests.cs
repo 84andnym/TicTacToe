@@ -48,5 +48,40 @@ namespace TicTacToe.Tests
             Assert.AreEqual("X", gameLogic.GameBorad[7]);
             Assert.AreEqual("O", gameLogic.GameBorad[4]);
         }
+
+        [Test()]
+        public void CheckWinnerOfOnePlacedSymbolTest()
+        {
+            var gameLogic = new GameLogic();
+            gameLogic.PlaceSymbol(5); // O
+            Assert.IsFalse(gameLogic.CheckWinner().isWinner);
+        }
+
+        [Test()]
+        public void CheckWinnerOTest()
+        {
+            var gameLogic = new GameLogic();
+            gameLogic.PlaceSymbol(0); // O
+            gameLogic.PlaceSymbol(4); // X
+            gameLogic.PlaceSymbol(1); // O
+            gameLogic.PlaceSymbol(5); // X
+            gameLogic.PlaceSymbol(2); // O
+            Assert.IsTrue(gameLogic.CheckWinner().isWinner);
+            Assert.AreEqual("Player O Wins", gameLogic.CheckWinner().winMessage);
+        }
+
+        [Test()]
+        public void CheckWinnerXTest()
+        {
+            var gameLogic = new GameLogic();
+            gameLogic.PlaceSymbol(5); // O
+            gameLogic.PlaceSymbol(0); // X
+            gameLogic.PlaceSymbol(1); // O
+            gameLogic.PlaceSymbol(4); // X
+            gameLogic.PlaceSymbol(2); // O
+            gameLogic.PlaceSymbol(8); // X
+            Assert.IsTrue(gameLogic.CheckWinner().isWinner);
+            Assert.AreEqual("Player X Wins", gameLogic.CheckWinner().winMessage);
+        }
     }
 }
