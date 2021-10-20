@@ -4,7 +4,7 @@ using System.Numerics;
 using System.Text;
 using Raylib_cs;
 
-namespace TicTacCamelToe
+namespace TicTacToe
 {
     public class GameLogic
     {

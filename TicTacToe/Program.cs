@@ -1,7 +1,7 @@
 ﻿using Raylib_cs;
 using System;
 
-namespace TicTacCamelToe
+namespace TicTacToe
 {
     class Program
     {

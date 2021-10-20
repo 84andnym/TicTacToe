@@ -1,10 +1,10 @@
 ﻿using NUnit.Framework;
-using TicTacCamelToe;
+using TicTacToe;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TicTacCamelToe.Tests
+namespace TicTacToe.Tests
 {
     [TestFixture()]
     public class GameLogicTests
