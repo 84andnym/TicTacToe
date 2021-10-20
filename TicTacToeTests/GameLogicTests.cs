@@ -83,5 +83,22 @@ namespace TicTacToe.Tests
             Assert.IsTrue(gameLogic.CheckWinner().isWinner);
             Assert.AreEqual("Player X Wins", gameLogic.CheckWinner().winMessage);
         }
+
+        [Test()]
+        public void CheckWinnerDrawTest()
+        {
+            var gameLogic = new GameLogic();
+            gameLogic.PlaceSymbol(0); // O
+            gameLogic.PlaceSymbol(4); // X
+            gameLogic.PlaceSymbol(2); // O
+            gameLogic.PlaceSymbol(1); // X
+            gameLogic.PlaceSymbol(7); // O
+            gameLogic.PlaceSymbol(5); // X
+            gameLogic.PlaceSymbol(3); // O
+            gameLogic.PlaceSymbol(6); // X
+            gameLogic.PlaceSymbol(8); // O
+            Assert.IsTrue(gameLogic.CheckWinner().isWinner);
+            Assert.AreEqual("It's a draw", gameLogic.CheckWinner().winMessage);
+        }
     }
 }

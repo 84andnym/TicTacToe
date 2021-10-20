@@ -17,14 +17,14 @@ namespace TicTacToe
         }
         internal static void DrawWinScreen(string winnerString)
         {
-            Raylib.DrawText(winnerString, (Program.width / 2 - 100), (Program.height / 2), 100, Color.GOLD);
+            Raylib.DrawText(winnerString, (Program.width / 2 - 315), (Program.height / 2), 100, Color.GOLD);
             Raylib.DrawRectangleRounded(Shapes.RestartButton, 1F, 1, Color.BLUE);
-            Raylib.DrawText("RESTART", Program.width / 2 + 20, Program.height / 3 * 2 + 20, 65, Color.GOLD);
+            Raylib.DrawText("RESTART", Program.width / 2 -160, Program.height / 3 * 2 + 20, 65, Color.GOLD);
         }
     }
     static class Shapes
     {
-        public static Rectangle RestartButton { get; set; } = new Rectangle(Program.width/2 - 20, Program.height / 3*2, 400, 100);
+        public static Rectangle RestartButton { get; set; } = new Rectangle(Program.width/2 - 200, Program.height / 3*2, 400, 100);
     }
 }
 
