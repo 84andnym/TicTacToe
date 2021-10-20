@@ -5,17 +5,19 @@ namespace TicTacToe
     internal class Program
     {
         public static GameLogic GameLogic { get; set; }
+        public static readonly int width = 1920;
+        public static readonly int height = 1080;
 
         private static void Main()
         {
-            var width = 1920;
-            var height = 1080;
 
             Raylib.InitWindow(width, height, "Tic tac toe");
             Raylib.SetTargetFPS(60);
             //Raylib.ToggleFullscreen();
 
             GameLogic = new GameLogic();
+            var gameState = new GameState();
+            gameState = GameState.isPlaying;
 
             int x = 0;
             for (int i = 1; i < 4; i++)
@@ -27,19 +29,39 @@ namespace TicTacToe
                     x++;
                 }
             }
-
+            (bool isWinner, string winMessage) checkWinnerRes = (false, "");
             while (!Raylib.WindowShouldClose())
             {
-                Raylib.BeginDrawing();
-                Raylib.ClearBackground(Color.WHITE);
-                Grafic.DrawGameBoard();
-                Raylib.EndDrawing();
+                
+                if (gameState == GameState.isPlaying) 
+                { 
+                    Raylib.BeginDrawing();
+                    Raylib.ClearBackground(Color.WHITE);
+                    Grafic.DrawGameBoard();
+                    Raylib.EndDrawing();
 
-                if (Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON))
+                    if (Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON))
+                    {
+                        var pos = Raylib.GetMousePosition();
+                        GameLogic.GetRectangle(pos);
+                        checkWinnerRes = GameLogic.CheckWinner();
+                        if(checkWinnerRes.isWinner == true)
+                        {
+                            gameState = GameState.winScreen;
+                        }
+                    }
+                }
+                if(gameState == GameState.winScreen)
                 {
-                    var pos = Raylib.GetMousePosition();
-                    GameLogic.GetRectangle(pos);
-                    GameLogic.CheckWinner();
+                    Raylib.BeginDrawing();
+                    Raylib.ClearBackground(Color.WHITE);
+                    Grafic.DrawWinScreen(checkWinnerRes.winMessage);
+                    Raylib.EndDrawing();
+                    if(Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON) && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), Shapes.RestartButton))
+                    {
+                        GameLogic.ClearGame();
+                        gameState = GameState.isPlaying;
+                    }
                 }
             }
             Raylib.CloseWindow();

@@ -30,6 +30,12 @@ namespace TicTacToe
             }
         }
 
+        public void ClearGame()
+        {
+            GameBorad.Clear();
+            GameBorad = new List<string> { "", "", "", "", "", "", "", "", "" };
+        }
+
         public (bool isWinner, string winMessage) CheckWinner()
         {
             if ((GameBorad[0] == "O" && GameBorad[1] == "O" && GameBorad[2] == "O") ||
@@ -60,6 +66,8 @@ namespace TicTacToe
     public enum GameState
     {
         isPlaying,
-        winScreen
+        winScreen,
+        achievementScreen,
+        homeScreen
     }
 }
