@@ -1,9 +1,9 @@
-﻿using Raylib_cs;
-using System.Collections.Generic;
-using System.Numerics;
-
-namespace TicTacToe
+﻿namespace TicTacToe
 {
+    using Raylib_cs;
+    using System.Collections.Generic;
+    using System.Numerics;
+
     public class GameLogic
     {
         public List<Rectangle> Rectangles { get; set; } = new List<Rectangle>();
@@ -11,6 +11,10 @@ namespace TicTacToe
         public List<string> GameBorad { get; set; } = new List<string> { "", "", "", "", "", "", "", "", "" };
         internal string player = "O";
 
+        /// <summary>
+        /// Get the Rectangle that is pressed
+        /// </summary>
+        /// <param name="Pos">Where mouse is pressed</param>
         internal void GetRectangle(Vector2 Pos)
         {
             for (int i = 0; i < Rectangles.Count; i++)
@@ -22,6 +26,10 @@ namespace TicTacToe
             }
         }
 
+        /// <summary>
+        /// Palce symbol in Array
+        /// </summary>
+        /// <param name="i"></param>
         public void PlaceSymbol(int i)
         {
             if (GameBorad[i] == "")
@@ -32,6 +40,9 @@ namespace TicTacToe
             }
         }
 
+        /// <summary>
+        /// Reset Game Logic
+        /// </summary>
         public void ClearGame()
         {
             GameBorad.Clear();
@@ -39,6 +50,10 @@ namespace TicTacToe
             GameBorad = new List<string> { "", "", "", "", "", "", "", "", "" };
         }
 
+        /// <summary>
+        /// Check if a winner is set
+        /// </summary>
+        /// <returns>a bool and a who won</returns>
         public (bool isWinner, string winMessage) CheckWinner()
         {
             if ((GameBorad[0] == "O" && GameBorad[1] == "O" && GameBorad[2] == "O") ||
@@ -70,6 +85,7 @@ namespace TicTacToe
             return (false, "");
         }
     }
+
     public enum GameState
     {
         isPlaying,
