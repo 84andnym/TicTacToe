@@ -30,13 +30,26 @@
             (bool isWinner, string winMessage) checkWinnerRes = (false, "");
             while (!Raylib.WindowShouldClose())
             {
-                if (gameState == GameState.isPlaying)
+                switch (gameState)
                 {
-                    SateController.IsPlaying(GameLogic, ref gameState, ref checkWinnerRes);
-                }
-                if (gameState == GameState.winScreen)
-                {
-                    SateController.WinScreen(GameLogic, ref gameState, checkWinnerRes);
+                    case GameState.homeScreen:
+                        SateController.HomeScreen(ref gameState);
+                        break;
+                    case GameState.isPlaying:
+                        SateController.IsPlaying(GameLogic, ref gameState, ref checkWinnerRes);
+                        break;
+                    case GameState.winScreen:
+                        SateController.WinScreen(GameLogic, ref gameState, checkWinnerRes);
+                        break;
+                    case GameState.achievementScreen:
+                        SateController.AchimentScreen(ref gameState);
+                        break;
+                    case GameState.settings:
+                        SateController.Settings(ref gameState);
+                        break;
+                    default:
+                        SateController.HomeScreen(ref gameState);
+                        break;
                 }
             }
             Raylib.CloseWindow();

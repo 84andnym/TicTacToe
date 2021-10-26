@@ -91,6 +91,7 @@
         isPlaying,
         winScreen,
         achievementScreen,
-        homeScreen
+        homeScreen,
+        settings
     }
 }

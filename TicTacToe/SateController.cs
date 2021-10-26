@@ -1,4 +1,5 @@
 ﻿using Raylib_cs;
+using System;
 
 namespace TicTacToe
 {
@@ -29,6 +30,11 @@ namespace TicTacToe
             }
         }
 
+        internal static void HomeScreen(ref GameState gameState)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Controll winScreen
         /// </summary>
@@ -46,6 +52,16 @@ namespace TicTacToe
                 gameLogic.ClearGame();
                 gameState = GameState.isPlaying;
             }
+        }
+
+        internal static void Settings(ref GameState gameState)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static void AchimentScreen(ref GameState gameState)
+        {
+            throw new NotImplementedException();
         }
     }
 }
