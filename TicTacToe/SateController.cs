@@ -30,9 +30,21 @@ namespace TicTacToe
             }
         }
 
-        internal static void HomeScreen(ref GameState gameState)
+        internal static void HomeScreen(ref GameState gameState, ref bool quitGame)
         {
-            throw new NotImplementedException();
+            Raylib.BeginDrawing();
+            Raylib.ClearBackground(Color.WHITE);
+            Grafic.DrawMainScreen();
+            Raylib.EndDrawing();
+
+            if (Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON) && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), Shapes.StartButton))
+            {
+                gameState = GameState.isPlaying;
+            }
+            else if (Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON) && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), Shapes.QuitButton))
+            {
+                quitGame = true;
+            }
         }
 
         /// <summary>

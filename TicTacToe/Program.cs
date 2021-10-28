@@ -7,6 +7,7 @@
         public static GameLogic GameLogic { get; set; }
         public static readonly int width = 1920;
         public static readonly int height = 1080;
+        public static bool quitGame = false;
 
         private static void Main()
         {
@@ -28,12 +29,12 @@
                 }
             }
             (bool isWinner, string winMessage) checkWinnerRes = (false, "");
-            while (!Raylib.WindowShouldClose())
+            while (!Raylib.WindowShouldClose() && !quitGame)
             {
                 switch (gameState)
                 {
                     case GameState.homeScreen:
-                        SateController.HomeScreen(ref gameState);
+                        SateController.HomeScreen(ref gameState, ref quitGame);
                         break;
                     case GameState.isPlaying:
                         SateController.IsPlaying(GameLogic, ref gameState, ref checkWinnerRes);
@@ -48,7 +49,7 @@
                         SateController.Settings(ref gameState);
                         break;
                     default:
-                        SateController.HomeScreen(ref gameState);
+                        SateController.HomeScreen(ref gameState, ref quitGame);
                         break;
                 }
             }
