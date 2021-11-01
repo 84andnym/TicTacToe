@@ -8,24 +8,25 @@ on:
 
 jobs:
 
-  build:
+  ##build:
 
-    runs-on: windows-latest
+    ##runs-on: windows-latest
 
-    steps:
-    - uses: actions/checkout@v2
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+    ##steps:
+    ##- uses: actions/checkout@v2
+    ##- name: Restore dependencies
+    ##  run: dotnet restore
+    ##- name: Build
+    ##  run: dotnet build --no-restore
+    ##- name: Test
+    ##  run: dotnet test --no-build --verbosity normal
       
   automerge:
-    needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Merge me!
-        uses: ridedott/merge-me-action@v2
+      - name: Approve pull request
+        uses: andrewmusgrave/automatic-pull-request-review@0.0.5
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          event: APPROVE
+          body: 'Thank you dependabot 🎊'
