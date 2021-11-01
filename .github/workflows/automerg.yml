@@ -1,19 +1,16 @@
-name: automerge
+name: Merge me!
+
 on:
-  pull_request:
-    branches: [ main ]
-  pull_request_review:
-    types:
-      - submitted
   check_suite:
     types:
       - completed
-  status: {}
+
 jobs:
-  automerge:
+  merge-me:
+    name: Merge me!
     runs-on: ubuntu-latest
     steps:
-      - name: automerge
-        uses: "pascalgn/automerge-action@v0.14.3"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Merge me!
+        uses: ridedott/merge-me-action@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
