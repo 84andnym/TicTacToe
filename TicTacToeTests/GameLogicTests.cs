@@ -1,8 +1,4 @@
 ﻿using NUnit.Framework;
-using TicTacToe;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace TicTacToe.Tests
 {
@@ -30,7 +26,6 @@ namespace TicTacToe.Tests
             Assert.AreEqual("O", gameLogic.GameBorad[3]);
             Assert.AreEqual("X", gameLogic.GameBorad[7]);
         }
-
 
         [Test()]
         public void PlaceSymbolWereSymbolIsAlreadyPlacedTest()
