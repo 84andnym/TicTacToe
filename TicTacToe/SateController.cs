@@ -64,6 +64,11 @@ namespace TicTacToe
                 gameLogic.ClearGame();
                 gameState = GameState.isPlaying;
             }
+            if (Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON) && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), Shapes.HomeScreenButton))
+            {
+                gameLogic.ClearGame();
+                gameState = GameState.homeScreen;
+            }
         }
 
         internal static void Settings(ref GameState gameState)
