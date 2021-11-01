@@ -8,25 +8,16 @@ on:
 
 jobs:
 
-  ##build:
+  build:
 
-    ##runs-on: windows-latest
+    runs-on: windows-latest
 
-    ##steps:
-    ##- uses: actions/checkout@v2
-    ##- name: Restore dependencies
-    ##  run: dotnet restore
-    ##- name: Build
-    ##  run: dotnet build --no-restore
-    ##- name: Test
-    ##  run: dotnet test --no-build --verbosity normal
-      
-  automerge:
-    runs-on: ubuntu-latest
     steps:
-      - name: Approve pull request
-        uses: andrewmusgrave/automatic-pull-request-review@0.0.5
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          event: APPROVE
-          body: 'Thank you dependabot 🎊'
+    - uses: actions/checkout@v2
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+
