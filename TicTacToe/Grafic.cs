@@ -7,7 +7,7 @@
     {
         internal static int playerOColorIndex = 0;
         internal static int playerXColorIndex = 4;
-        public static List<Color> playerColors = new List<Color> { Color.GREEN, Color.BLUE, Color.ORANGE, Color.YELLOW, Color.RED, Color.PURPLE, Color.BLACK, Color.GOLD, Color.LIME };
+        public static List<Color> playerColors = new List<Color> { Color.GREEN, Color.BLUE, Color.ORANGE, Color.YELLOW, Color.RED, Color.PURPLE, Color.GOLD, Color.LIME };
 
         /// <summary>
         /// Draws the active Game board
