@@ -7,6 +7,8 @@
     {
         internal static int playerOColorIndex = 0;
         internal static int playerXColorIndex = 4;
+        internal static char playerOCHar = 'O';
+        internal static char playerXCHar = 'X';
         public static List<Color> playerColors = new List<Color> { Color.GREEN, Color.BLUE, Color.ORANGE, Color.YELLOW, Color.RED, Color.PURPLE, Color.GOLD, Color.LIME };
 
         /// <summary>
@@ -14,9 +16,16 @@
         /// </summary>
         internal static void DrawGameBoard()
         {
+            var font = Raylib.GetFontDefault();
             for (int i = 0; i < Program.GameLogic.Rectangles.Count; i++)
             {
                 Raylib.DrawRectangleRec(Program.GameLogic.Rectangles[i], Program.GameLogic.GameBorad[i] == "O" ? playerColors[playerOColorIndex] : Program.GameLogic.GameBorad[i] == "X" ? playerColors[playerXColorIndex] : Color.GRAY);
+
+                Raylib.DrawText(Program.GameLogic.GameBorad[i] == "O" ? playerOCHar.ToString() : Program.GameLogic.GameBorad[i] == "X" ? playerXCHar.ToString() : "",
+                    (int)Program.GameLogic.TextPos[i].X,
+                    (int)Program.GameLogic.TextPos[i].Y,
+                    150, 
+                    Color.BLACK);
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿namespace TicTacToe
 {
     using Raylib_cs;
+    using System.Numerics;
 
     internal class Program
     {
@@ -25,6 +26,8 @@
                 {
                     var rec = new Rectangle((width / 4 * i - (width / 5 / 2)), (height / 4 * y - (height / 5 / 2)), width / 5, height / 5);
                     GameLogic.Rectangles.Add(rec);
+                    var vec = new Vector2(width / 4 * i - 45, height / 4 * y - 60);
+                    GameLogic.TextPos.Add(vec);
                     x++;
                 }
             }
