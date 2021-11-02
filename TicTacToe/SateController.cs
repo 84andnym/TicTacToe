@@ -39,7 +39,7 @@ namespace TicTacToe
 
             if (Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON) && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), Shapes.StartButton))
             {
-                gameState = GameState.isPlaying;
+                gameState = GameState.settings;
             }
             else if (Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON) && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), Shapes.QuitButton))
             {
@@ -73,7 +73,31 @@ namespace TicTacToe
 
         internal static void Settings(ref GameState gameState)
         {
-            throw new NotImplementedException();
+            Raylib.BeginDrawing();
+            Raylib.ClearBackground(Color.WHITE);
+            Grafic.DrawOptionScreen();
+            Raylib.EndDrawing();
+            if (Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON) && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), Shapes.PlayerColorO))
+            {
+                Grafic.playerOColorIndex++;
+                if (Grafic.playerOColorIndex >= Grafic.playerColors.Count)
+                {
+                    Grafic.playerOColorIndex = 0;
+
+                }
+            }
+            if (Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON) && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), Shapes.PlayerColorX))
+            {
+                Grafic.playerXColorIndex++;
+                if (Grafic.playerXColorIndex >= Grafic.playerColors.Count)
+                {
+                    Grafic.playerXColorIndex = 0;
+                }
+            }
+            if (Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON) && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), Shapes.StartGame))
+            {
+                gameState = GameState.isPlaying;
+            }
         }
 
         internal static void AchimentScreen(ref GameState gameState)

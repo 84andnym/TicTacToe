@@ -1,9 +1,14 @@
 ﻿namespace TicTacToe
 {
     using Raylib_cs;
+    using System.Collections.Generic;
 
     internal class Grafic
     {
+        internal static int playerOColorIndex = 0;
+        internal static int playerXColorIndex = 4;
+        public static List<Color> playerColors = new List<Color> { Color.GREEN, Color.BLUE, Color.ORANGE, Color.YELLOW, Color.RED, Color.PURPLE, Color.BLACK, Color.GOLD, Color.LIME };
+
         /// <summary>
         /// Draws the active Game board
         /// </summary>
@@ -11,8 +16,18 @@
         {
             for (int i = 0; i < Program.GameLogic.Rectangles.Count; i++)
             {
-                Raylib.DrawRectangleRec(Program.GameLogic.Rectangles[i], Program.GameLogic.GameBorad[i] == "O" ? Color.GREEN : Program.GameLogic.GameBorad[i] == "X" ? Color.RED : Color.GRAY);
+                Raylib.DrawRectangleRec(Program.GameLogic.Rectangles[i], Program.GameLogic.GameBorad[i] == "O" ? playerColors[playerOColorIndex] : Program.GameLogic.GameBorad[i] == "X" ? playerColors[playerXColorIndex] : Color.GRAY);
             }
+        }
+
+        internal static void DrawOptionScreen()
+        {
+            Raylib.DrawRectangleRounded(Shapes.PlayerColorO, 1F, 1, playerColors[playerOColorIndex]);
+            Raylib.DrawRectangleRounded(Shapes.PlayerColorX, 1F, 1, playerColors[playerXColorIndex]);
+            Raylib.DrawRectangleRounded(Shapes.StartGame, 1F, 1, Color.GREEN);
+            Raylib.DrawText("Player O", Program.width / 2 - 165, Program.height / 3 + 15, 75, Color.WHITE);
+            Raylib.DrawText("Player X", Program.width / 2 - 165, Program.height / 2 + 15, 75, Color.WHITE);
+            Raylib.DrawText("Start", Program.width / 2 - 115, Program.height / 3 * 2 + 15, 75, Color.WHITE);
         }
 
         /// <summary>
@@ -41,6 +56,9 @@
 
     internal static class Shapes
     {
+        public static Rectangle StartGame { get; set; } = new Rectangle(Program.width / 2 - 200, Program.height / 3 * 2, 400, 100);
+        public static Rectangle PlayerColorO { get; set; } = new Rectangle(Program.width / 2 - 200, Program.height / 3, 400, 100);
+        public static Rectangle PlayerColorX { get; set; } = new Rectangle(Program.width / 2 - 200, Program.height / 2, 400, 100);
         public static Rectangle RestartButton { get; set; } = new Rectangle(Program.width / 2 - 450, Program.height / 3 * 2, 400, 100);
         public static Rectangle HomeScreenButton { get; set; } = new Rectangle(Program.width / 2 + 50, Program.height / 3 * 2, 400, 100);
         public static Rectangle StartButton { get; set; } = new Rectangle(Program.width / 2 - 200, Program.height / 2 - 100, 400, 100);
