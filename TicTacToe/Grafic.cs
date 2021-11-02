@@ -16,19 +16,21 @@
         /// </summary>
         internal static void DrawGameBoard()
         {
-            var font = Raylib.GetFontDefault();
             for (int i = 0; i < Program.GameLogic.Rectangles.Count; i++)
             {
                 Raylib.DrawRectangleRec(Program.GameLogic.Rectangles[i], Program.GameLogic.GameBorad[i] == "O" ? playerColors[playerOColorIndex] : Program.GameLogic.GameBorad[i] == "X" ? playerColors[playerXColorIndex] : Color.GRAY);
 
                 Raylib.DrawText(Program.GameLogic.GameBorad[i] == "O" ? playerOCHar.ToString() : Program.GameLogic.GameBorad[i] == "X" ? playerXCHar.ToString() : "",
-                    (int)Program.GameLogic.TextPos[i].X,
-                    (int)Program.GameLogic.TextPos[i].Y,
-                    150, 
+                    (int)Program.GameLogic.TextPos[i].X - 45,
+                    (int)Program.GameLogic.TextPos[i].Y - 60,
+                    150,
                     Color.BLACK);
             }
         }
 
+        /// <summary>
+        /// Draws option screen
+        /// </summary>
         internal static void DrawOptionScreen()
         {
             Raylib.DrawRectangleRounded(Shapes.PlayerColorO, 1F, 1, playerColors[playerOColorIndex]);
@@ -51,6 +53,7 @@
             Raylib.DrawRectangleRounded(Shapes.HomeScreenButton, 1F, 1, Color.BLUE);
             Raylib.DrawText("HOME", Program.width / 2 + 160, Program.height / 3 * 2 + 20, 65, Color.GOLD);
         }
+
         /// <summary>
         /// Draws a Main Screen
         /// </summary>
@@ -65,12 +68,20 @@
 
     internal static class Shapes
     {
+        //Option screen
         public static Rectangle StartGame { get; set; } = new Rectangle(Program.width / 2 - 200, Program.height / 3 * 2, 400, 100);
+
         public static Rectangle PlayerColorO { get; set; } = new Rectangle(Program.width / 2 - 200, Program.height / 3, 400, 100);
         public static Rectangle PlayerColorX { get; set; } = new Rectangle(Program.width / 2 - 200, Program.height / 2, 400, 100);
+
+        ///Win scren
         public static Rectangle RestartButton { get; set; } = new Rectangle(Program.width / 2 - 450, Program.height / 3 * 2, 400, 100);
+
         public static Rectangle HomeScreenButton { get; set; } = new Rectangle(Program.width / 2 + 50, Program.height / 3 * 2, 400, 100);
+
+        //Home Screen
         public static Rectangle StartButton { get; set; } = new Rectangle(Program.width / 2 - 200, Program.height / 2 - 100, 400, 100);
+
         public static Rectangle QuitButton { get; set; } = new Rectangle(Program.width / 2 - 200, Program.height / 2 + 100, 400, 100);
     }
 }

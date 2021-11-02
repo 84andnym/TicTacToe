@@ -20,18 +20,26 @@
             GameState gameState = GameState.homeScreen;
 
             int x = 0;
+
+            /////
+            //Create Standatd Values
+            /////
             for (int i = 1; i < 4; i++)
             {
                 for (int y = 1; y < 4; y++)
                 {
                     var rec = new Rectangle((width / 4 * i - (width / 5 / 2)), (height / 4 * y - (height / 5 / 2)), width / 5, height / 5);
                     GameLogic.Rectangles.Add(rec);
-                    var vec = new Vector2(width / 4 * i - 45, height / 4 * y - 60);
+                    var vec = new Vector2(width / 4 * i, height / 4 * y);
                     GameLogic.TextPos.Add(vec);
                     x++;
                 }
             }
             (bool isWinner, string winMessage) checkWinnerRes = (false, "");
+
+            /////
+            //Run Game
+            /////
             while (!Raylib.WindowShouldClose() && !quitGame)
             {
                 switch (gameState)
@@ -39,18 +47,23 @@
                     case GameState.homeScreen:
                         SateController.HomeScreen(ref gameState, ref quitGame);
                         break;
+
                     case GameState.isPlaying:
                         SateController.IsPlaying(GameLogic, ref gameState, ref checkWinnerRes);
                         break;
+
                     case GameState.winScreen:
                         SateController.WinScreen(GameLogic, ref gameState, checkWinnerRes);
                         break;
+
                     case GameState.achievementScreen:
                         SateController.AchimentScreen(ref gameState);
                         break;
+
                     case GameState.settings:
                         SateController.Settings(ref gameState);
                         break;
+
                     default:
                         SateController.HomeScreen(ref gameState, ref quitGame);
                         break;

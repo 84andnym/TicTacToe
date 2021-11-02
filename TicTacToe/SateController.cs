@@ -83,7 +83,6 @@ namespace TicTacToe
                 if (Grafic.playerOColorIndex >= Grafic.playerColors.Count)
                 {
                     Grafic.playerOColorIndex = 0;
-
                 }
             }
             if (Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON) && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), Shapes.PlayerColorX))
