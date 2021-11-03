@@ -47,10 +47,10 @@
             Raylib.DrawRectangleRounded(Shapes.PlayerColor1, 1F, 1, playerColors[player1ColorIndex]);
             Raylib.DrawRectangleRounded(Shapes.PlayerColor2, 1F, 1, playerColors[player2ColorIndex]);
             Raylib.DrawRectangleRounded(Shapes.StartGame, 1F, 1, Color.GREEN);
-            Raylib.DrawTexture(playerTextures[player1TextureIndex], Program.width/3, Program.height/3, Color.WHITE);
-            Raylib.DrawTexture(playerTextures[player2TextureIndex],Program.width / 3 * 2, Program.height / 3, Color.WHITE);
-            Raylib.DrawText("Player 1", Program.width / 2 - 165, Program.height / 3 + 15, 75, Color.WHITE);
-            Raylib.DrawText("Player 2", Program.width / 2 - 165, Program.height / 2 + 15, 75, Color.WHITE);
+            Raylib.DrawTexture(playerTextures[player1TextureIndex], Program.width / 3 - 100, Program.height / 3 - 100, Color.WHITE);
+            Raylib.DrawTexture(playerTextures[player2TextureIndex], Program.width / 3 * 2 - 100, Program.height / 3 - 100, Color.WHITE);
+            Raylib.DrawText("Player 1", Program.width / 3 - 165, Program.height / 2 + 15, 75, Color.WHITE);
+            Raylib.DrawText("Player 2", Program.width / 3 * 2 - 165, Program.height / 2 + 15, 75, Color.WHITE);
             Raylib.DrawText("Start", Program.width / 2 - 115, Program.height / 3 * 2 + 15, 75, Color.WHITE);
             if(samePlayerTexture == true)
             {
@@ -90,8 +90,8 @@
         public static Rectangle PlayerTexture1 { get; set; } = new Rectangle(Program.width / 3 - 100, Program.height / 3 - 100, 200, 200);
         public static Rectangle PlayerTexture2 { get; set; } = new Rectangle(Program.width / 3 * 2 - 100, Program.height / 3 - 100, 200, 200);
 
-        public static Rectangle PlayerColor1 { get; set; } = new Rectangle(Program.width / 2 - 200, Program.height / 3, 400, 100);
-        public static Rectangle PlayerColor2 { get; set; } = new Rectangle(Program.width / 2 - 200, Program.height / 2, 400, 100);
+        public static Rectangle PlayerColor1 { get; set; } = new Rectangle(Program.width / 3 - 200, Program.height / 2, 400, 100);
+        public static Rectangle PlayerColor2 { get; set; } = new Rectangle(Program.width / 3 * 2 - 200, Program.height / 2, 400, 100);
 
         ///Win scren
         public static Rectangle RestartButton { get; set; } = new Rectangle(Program.width / 2 - 450, Program.height / 3 * 2, 400, 100);
