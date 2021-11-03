@@ -7,6 +7,7 @@
     public class GameLogic
     {
         public List<Rectangle> Rectangles { get; set; } = new List<Rectangle>();
+        internal List<Vector2> TextPos { get; set; } = new List<Vector2>();
         public int Turns { get; set; } = 0;
         public List<string> GameBorad { get; set; } = new List<string> { "", "", "", "", "", "", "", "", "" };
         internal string player = "O";
