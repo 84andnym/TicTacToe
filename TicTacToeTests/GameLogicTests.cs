@@ -62,7 +62,7 @@ namespace TicTacToe.Tests
             gameLogic.PlaceSymbol(5); // X
             gameLogic.PlaceSymbol(2); // O
             Assert.IsTrue(gameLogic.CheckWinner().isWinner);
-            Assert.AreEqual("Player O Wins", gameLogic.CheckWinner().winMessage);
+            Assert.AreEqual("Player 1 Wins", gameLogic.CheckWinner().winMessage);
         }
 
         [Test()]
@@ -76,7 +76,7 @@ namespace TicTacToe.Tests
             gameLogic.PlaceSymbol(2); // O
             gameLogic.PlaceSymbol(8); // X
             Assert.IsTrue(gameLogic.CheckWinner().isWinner);
-            Assert.AreEqual("Player X Wins", gameLogic.CheckWinner().winMessage);
+            Assert.AreEqual("Player 2 Wins", gameLogic.CheckWinner().winMessage);
         }
 
         [Test()]
