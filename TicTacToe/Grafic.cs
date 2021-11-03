@@ -23,6 +23,9 @@
         /// </summary>
         internal static void DrawGameBoard()
         {
+
+            Raylib.DrawText("Player " + (Program.GameLogic.player == "O" ? "1" : "2") + "'s turn", Program.width / 2 - 190, 20, 50, Color.RED);
+
             for (int i = 0; i < Program.GameLogic.Rectangles.Count; i++)
             {
                 Raylib.DrawRectangleRec(Program.GameLogic.Rectangles[i], Program.GameLogic.GameBorad[i] == "O" ? playerColors[player1ColorIndex] : Program.GameLogic.GameBorad[i] == "X" ? playerColors[player2ColorIndex] : Color.GRAY);
@@ -35,7 +38,6 @@
                 {
                     Raylib.DrawTexture(playerTextures[player2TextureIndex], (int)Program.GameLogic.TextPos[i].X - 100, (int)Program.GameLogic.TextPos[i].Y - 100, Color.WHITE);
                 }
-
             }
         }
 
