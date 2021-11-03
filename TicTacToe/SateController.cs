@@ -77,25 +77,49 @@ namespace TicTacToe
             Raylib.ClearBackground(Color.WHITE);
             Grafic.DrawOptionScreen();
             Raylib.EndDrawing();
-            if (Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON) && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), Shapes.PlayerColorO))
+            if (Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON) && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), Shapes.PlayerColor1))
             {
-                Grafic.playerOColorIndex++;
-                if (Grafic.playerOColorIndex >= Grafic.playerColors.Count)
+                Grafic.player1ColorIndex++;
+                if (Grafic.player1ColorIndex >= Grafic.playerColors.Count)
                 {
-                    Grafic.playerOColorIndex = 0;
+                    Grafic.player1ColorIndex = 0;
                 }
             }
-            if (Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON) && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), Shapes.PlayerColorX))
+            if (Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON) && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), Shapes.PlayerColor2))
             {
-                Grafic.playerXColorIndex++;
-                if (Grafic.playerXColorIndex >= Grafic.playerColors.Count)
+                Grafic.player2ColorIndex++;
+                if (Grafic.player2ColorIndex >= Grafic.playerColors.Count)
                 {
-                    Grafic.playerXColorIndex = 0;
+                    Grafic.player2ColorIndex = 0;
+                }
+            }
+            if (Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON) && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), Shapes.PlayerTexture1))
+            {
+                Grafic.player1TextureIndex++;
+                if (Grafic.player1TextureIndex >= Grafic.playerTextures.Count)
+                {
+                    Grafic.player1TextureIndex = 0;
+                }
+            }
+            if (Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON) && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), Shapes.PlayerTexture2))
+            {
+                Grafic.player2TextureIndex++;
+                if (Grafic.player2TextureIndex >= Grafic.playerTextures.Count)
+                {
+                    Grafic.player2TextureIndex = 0;
                 }
             }
             if (Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON) && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), Shapes.StartGame))
             {
-                gameState = GameState.isPlaying;
+                if(Grafic.player1TextureIndex == Grafic.player2TextureIndex)
+                {
+                    Grafic.samePlayerTexture = true;
+                }
+                else
+                {
+                    Grafic.samePlayerTexture = false;
+                    gameState = GameState.isPlaying;
+                }
             }
         }
 

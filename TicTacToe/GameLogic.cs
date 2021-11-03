@@ -66,7 +66,7 @@
                 (GameBorad[0] == "O" && GameBorad[4] == "O" && GameBorad[8] == "O") ||
                 (GameBorad[2] == "O" && GameBorad[4] == "O" && GameBorad[6] == "O"))
             {
-                return (true, "Player O Wins");
+                return (true, "Player 1 Wins");
             }
             else if ((GameBorad[0] == "X" && GameBorad[1] == "X" && GameBorad[2] == "X") ||
                     (GameBorad[3] == "X" && GameBorad[4] == "X" && GameBorad[5] == "X") ||
@@ -77,7 +77,7 @@
                     (GameBorad[0] == "X" && GameBorad[4] == "X" && GameBorad[8] == "X") ||
                     (GameBorad[2] == "X" && GameBorad[4] == "X" && GameBorad[6] == "X"))
             {
-                return (true, "Player X Wins");
+                return (true, "Player 2 Wins");
             }
             else if (Turns == 9)
             {
