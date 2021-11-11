@@ -1,6 +1,7 @@
 ﻿namespace TicTacToe
 {
     using Raylib_cs;
+    using System;
     using System.Collections.Generic;
     using System.Numerics;
 
@@ -38,6 +39,10 @@
                 GameBorad[i] = player;
                 player = player == "O" ? "X" : "O";
                 Turns++;
+                if(player == "X" && Grafic.IsCPU == true)
+                {
+                    CPULogic();
+                }
             }
         }
 
@@ -49,6 +54,24 @@
             GameBorad.Clear();
             Turns = 0;
             GameBorad = new List<string> { "", "", "", "", "", "", "", "", "" };
+        }
+
+        /// <summary>
+        /// CPU Logic.
+        /// </summary>
+        public void CPULogic()
+        {
+            var availableSpot = false;
+            Random r = new Random();
+            while (!availableSpot)
+            {
+                var place = r.Next(0,9);
+                if(GameBorad[place] == "")
+                {
+                    PlaceSymbol(place);
+                    availableSpot = true;
+                }
+            }
         }
 
         /// <summary>
@@ -77,7 +100,7 @@
                     (GameBorad[0] == "X" && GameBorad[4] == "X" && GameBorad[8] == "X") ||
                     (GameBorad[2] == "X" && GameBorad[4] == "X" && GameBorad[6] == "X"))
             {
-                return (true, "Player 2 Wins");
+                return (true, Grafic.IsCPU == false ?"Player 2 Wins" : "CPU Wins");
             }
             else if (Turns == 9)
             {

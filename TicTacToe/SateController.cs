@@ -121,6 +121,11 @@ namespace TicTacToe
                     gameState = GameState.isPlaying;
                 }
             }
+            if(Raylib.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON) && Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), Shapes.CPUSwitch))
+            {
+
+                Grafic.IsCPU = Grafic.IsCPU == true ? false : true; 
+            }
         }
 
         internal static void AchimentScreen(ref GameState gameState)
